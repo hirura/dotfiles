@@ -27,7 +27,7 @@ done
 # download and deploy vim color schemes
 if [ ! -d ${HOME}/.vim/colors/molokai ]
 then
-  git clone https://github.com/tomasr/molokai/.git ${HOME}/.vim/colors/molokai
+  git clone https://github.com/tomasr/molokai.git ${HOME}/.vim/colors/molokai
 else
   (cd ${HOME}/.vim/colors/molokai && git pull)
 fi
