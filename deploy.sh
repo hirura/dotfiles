@@ -25,7 +25,17 @@ do
 done
 
 # download and deploy vim color schemes
-git clone https://github.com/tomasr/molokai/.git ${HOME}/.vim/colors/molokai
+if [ ! -d ${HOME}/.vim/colors/molokai ]
+then
+  git clone https://github.com/tomasr/molokai/.git ${HOME}/.vim/colors/molokai
+else
+  (cd ${HOME}/.vim/colors/molokai && git pull)
+fi
 ln -snfv ${HOME}/.vim/colors/molokai/colors/molokai.vim ${HOME}/.vim/colors/
-git clone https://github.com/cocopon/iceberg.vim.git ${HOME}/.vim/colors/iceberg
+if [ ! -d ${HOME}/.vim/colors/iceberg ]
+then
+  git clone https://github.com/cocopon/iceberg.vim.git ${HOME}/.vim/colors/iceberg
+else
+  (cd ${HOME}/.vim/colors/iceberg && git pull)
+fi
 ln -snfv ${HOME}/.vim/colors/iceberg/colors/iceberg.vim ${HOME}/.vim/colors/
