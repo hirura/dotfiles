@@ -18,5 +18,14 @@ do
       fi
     done
   fi
-  ln -snfv ${SCRIPT_DIR}/${_dotfile} ${HOME}/${_dotfile}
+  if [ ! ".gitkeep" = ${_dotfile##*/} ]
+  then
+    ln -snfv ${SCRIPT_DIR}/${_dotfile} ${HOME}/${_dotfile}
+  fi
 done
+
+# download and deploy vim color schemes
+git clone https://github.com/tomasr/molokai/.git ${HOME}/.vim/colors/molokai
+ln -snfv ${HOME}/.vim/colors/molokai/colors/molokai.vim ${HOME}/.vim/colors/
+git clone https://github.com/cocopon/iceberg.vim.git ${HOME}/.vim/colors/iceberg
+ln -snfv ${HOME}/.vim/colors/iceberg/colors/iceberg.vim ${HOME}/.vim/colors/
